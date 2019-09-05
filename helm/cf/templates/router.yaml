@@ -118,6 +118,9 @@ items:
 
     {{- if .Values.services.loadbalanced }}
     type: "LoadBalancer"
+    {{- if .Values.router.staticIP }}
+    loadBalancerIP: {{ .Values.router.staticIP }}
+    {{- end }}
     {{- end }}
 
   {{- if and .Values.services.loadbalanced .Values.ingress.enabled }}

@@ -114,6 +114,7 @@ items:
 
     {{- if .Values.services.loadbalanced }}
     type: "LoadBalancer"
+    loadBalancerIP: {{ .Values.uaa.loadBalancerIP }}
     {{- end }}
 
   {{- if and .Values.services.loadbalanced .Values.ingress.enabled }}
