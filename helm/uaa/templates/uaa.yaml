@@ -114,12 +114,8 @@ items:
 
     {{- if .Values.services.loadbalanced }}
     type: "LoadBalancer"
-    loadBalancerIP: {{ .Values.uaa.loadBalancerIP }}
     {{- end }}
 
-  {{- if and .Values.services.loadbalanced .Values.ingress.enabled }}
-  _incompatible: {{ fail "services.loadbalanced and ingress.enabled cannot both be set" }}
-  {{- end }}
 kind: "List"
 ---
 # The uaa instance group contains the following jobs:

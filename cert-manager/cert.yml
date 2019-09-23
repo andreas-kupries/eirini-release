@@ -1,18 +1,13 @@
 apiVersion: certmanager.k8s.io/v1alpha1
 kind: Certificate
 metadata:
-  name: bits-crt
-  namespace: scf #remember to change
+  name: uaa-crt
+  namespace: uaa #remember to change
 spec:
-  secretName: private-registry-cert
+  secretName: ingress-tls
   dnsNames:
-  - registry.34.98.76.11.nip.io
-  acme:
-    config:
-    - http01:
-        ingress: bits-registry
-      domains:
-      - registry.34.98.76.11.nip.io
+  - uaa.gcp-test.ci-envs.eirini.cf-app.com
+  - "*.uaa.gcp-test.ci-envs.eirini.cf-app.com"
   issuerRef:
-    name: letsencrypt-prod
+    name: dns-issuer-staging
     kind: ClusterIssuer
