@@ -57,9 +57,9 @@ spec:
         - name: AGENT_METRIC_SOURCE_ID
           value: scf/daemonset/loggregator-fluentd
         - name: ROUTER_ADDR
-          value: doppler-doppler.{{ .Release.Namespace }}.svc.cluster.local:8082
+          value: {{ .Values.opi.doppler_address }}
         - name: ROUTER_ADDR_WITH_AZ
-          value: doppler-doppler.{{ .Release.Namespace }}.svc.cluster.local:8082
+          value: {{ .Values.opi.doppler_address }}
         - name: AGENT_PPROF_PORT
           value: "6062"
         - name: AGENT_HEALTH_ENDPOINT_PORT
@@ -92,7 +92,7 @@ spec:
             path: fluent.conf
       - name: loggregator-tls-certs
         secret:
-          secretName: secrets-{{ .Values.scf.version }}-{{ .Values.scf.secrets_generation_counter }}
+          secretName: {{ .Values.opi.cc_certs_secret_name }}
           items:
             - key: loggregator-agent-cert
               path: agent.crt

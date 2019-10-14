@@ -7,18 +7,12 @@ data:
   opi.yaml: |
     opi:
       kube_namespace: {{ .Values.opi.namespace }}
-      nats_ip: "nats-nats.{{ .Release.Namespace }}.svc.cluster.local"
+      nats_ip: "{{ .Values.opi.nats_address }}"
       nats_port: 4222
-      cc_internal_api: "https://api.{{ .Release.Namespace }}.svc.cluster.local:9023"
-      cc_certs_secret_name: "secrets-{{ .Values.scf.version }}-{{ .Values.scf.secrets_generation_counter }}"
-      {{- if .Values.opi.use_registry_ingress }}
-      registry_address: "registry.{{ .Values.opi.ingress_endpoint }}:443"
-      {{- else if .Values.services.loadbalanced }}
-      registry_address: "registry.{{ .Values.env.DOMAIN }}:6666"
-      {{- else }}
-      registry_address: "registry.{{ index .Values.kube.external_ips 0 }}.nip.io:6666"
-      {{- end }}
-      registry_secret_name: {{ .Values.opi.registry_secret_name }}
+      cc_internal_api: "{{ .Values.opi.cc_internal_api }}"
+      cc_certs_secret_name: "{{ .Values.opi.cc_certs_secret_name }}"
+      registry_address: "{{ .Values.opi.registry_address }}"
+      registry_secret_name: "{{ .Values.opi.registry_secret_name }}"
       eirini_address: "https://eirini-opi.{{ .Release.Namespace }}.svc.cluster.local:8085"
       {{- if .Values.opi.stager }}
       downloader_image: "{{ .Values.opi.stager.downloader_image }}:{{ .Values.opi.image_tag }}"
@@ -29,14 +23,14 @@ data:
       executor_image: eirini/recipe-executor@{{ .Files.Get "versions/staging-executor" }}
       uploader_image: eirini/recipe-uploader@{{ .Files.Get "versions/staging-uploader" }}
       {{- end }}
-      loggregator_address: "doppler-doppler-set.{{ .Release.Namespace }}.svc.cluster.local:8082"
+      loggregator_address: "{{ .Values.opi.loggregator_address }}"
       loggergator_cert_path: "/workspace/jobs/opi/secrets/doppler.crt"
       loggregator_key_path: "/workspace/jobs/opi/secrets/doppler.key"
       loggregator_ca_path: "/workspace/jobs/opi/secrets/doppler.ca"
       cc_cert_path: "/workspace/jobs/opi/secrets/cc.crt"
       cc_key_path: "/workspace/jobs/opi/secrets/cc.key"
       cc_ca_path: "/workspace/jobs/opi/secrets/cc.ca"
-      rootfs_version: {{ .Values.global.rootfs_version }}
+      rootfs_version: "{{ .Values.opi.rootfs_version }}"
       client_ca_path: "/workspace/jobs/opi/secrets/eirini-client-ca.crt"
       server_cert_path: "/workspace/jobs/opi/secrets/eirini-server.crt"
       server_key_path: "/workspace/jobs/opi/secrets/eirini-server.key"

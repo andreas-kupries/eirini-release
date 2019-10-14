@@ -5,7 +5,7 @@ metadata:
   name: "eirini-opi"
 spec:
 {{- if not .Values.opi.use_registry_ingress }}
-  externalIPs: {{ .Values.kube.external_ips | toJson }}
+  externalIPs: {{ .Values.opi.external_ips | toJson }}
 {{- end }}
   ports:
     - port: 8085

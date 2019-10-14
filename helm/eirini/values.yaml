@@ -1,38 +1,16 @@
 opi:
-  # set ingress endoint when 'use_registry_ingress' is set to true
   ingress_endpoint: no-ingress-set
   use_registry_ingress: false
-
   disk_limit_mb: 2048
   image_tag: latest
   namespace: eirini
   registry_secret_name: registry-credentials
   rootfs_patcher_timeout: 2m
   version: 0.0.0
-kube:
   external_ips: []
-
-scf:
-  version: 2.16.4
-  secrets_generation_counter: 2
-
-services:
-  loadbalanced: false
-
-bits:
-  # set to true if you wish to use a pre-populated
-  # secret for TLS certs, such as that created by
-  # cert-manager
-  useExistingSecret: false
-
-secrets:
-  BITS_SERVICE_SECRET: secret
-  BITS_SERVICE_SIGNING_USER_PASSWORD: notpassword123
-  BLOBSTORE_PASSWORD:  blobstore
-
-env:
-  # Base domain of the SCF cluster.
-  # Example: "my-scf-cluster.com"
-  DOMAIN: ~
-global:
   rootfs_version: v75.0.0
+  registry_address: NOT_SET
+  cc_internal_api: NOT_SET
+  cc_certs_secret_name: NOT_SET
+  nats_address: NOT_SET
+  doppler_address: NOT_SET

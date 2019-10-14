@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "rootfs-patcher-{{ .Values.global.rootfs_version }}-{{ .Release.Revision }}"
+  name: "rootfs-patcher-{{ .Values.opi.rootfs_version }}-{{ .Release.Revision }}"
 spec:
   template:
     spec:
@@ -22,7 +22,7 @@ spec:
         command:
         - /rootfs-patcher
         - --namespace={{ .Values.opi.namespace }}
-        - --rootfs-version={{ .Values.global.rootfs_version }}
+        - --rootfs-version={{ .Values.opi.rootfs_version }}
         {{- if .Values.opi.rootfs_patcher_image }}
         image: {{.Values.opi.rootfs_patcher_image}}:{{ .Values.opi.image_tag }}
         {{- else }}
