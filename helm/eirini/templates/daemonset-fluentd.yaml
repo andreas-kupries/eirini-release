@@ -98,5 +98,5 @@ spec:
               path: agent.crt
             - key: loggregator-agent-cert-key
               path: agent.key
-            - key: internal-ca-cert
+            - key: loggregator-agent-ca
               path: ca.crt
