@@ -14,3 +14,4 @@ opi:
   cc_certs_secret_name: NOT_SET
   nats_address: NOT_SET
   doppler_address: NOT_SET
+  secret_smuggler_image: eirini/secret-smuggler
