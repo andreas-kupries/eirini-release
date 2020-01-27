@@ -56,7 +56,7 @@ spec:
         {{- if .Values.opi.image }}
         image: {{ .Values.opi.image }}:{{ .Values.opi.image_tag }}
         {{- else }}
-        image: eirini/opi@{{ .Files.Get "versions/opi" }}
+        image: eirini/opi@sha256:5d32bcda8e8d01e1b837d0c4cd94b1c2ac2266bee3de9bd1aee0d07bd81e7934
         {{- end }}
         imagePullPolicy: Always
         volumeMounts:

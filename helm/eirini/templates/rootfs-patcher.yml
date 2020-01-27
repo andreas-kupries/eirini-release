@@ -29,7 +29,7 @@ spec:
         {{- if .Values.opi.rootfs_patcher_image }}
         image: {{.Values.opi.rootfs_patcher_image}}:{{ .Values.opi.image_tag }}
         {{- else }}
-        image: eirini/rootfs-patcher@{{ .Files.Get "versions/rootfs-patcher" }}
+        image: eirini/rootfs-patcher@sha256:7ebadb54d2a233dce909b262f187b764d3bbcc634c26480c4b362acbf4d8396e
         {{- end }}
         imagePullPolicy: IfNotPresent
       restartPolicy: OnFailure
