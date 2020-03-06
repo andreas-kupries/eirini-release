@@ -38,7 +38,7 @@ Follow instructions [here](./gke.md).
 ### General instructions
 
 1. Choose a [non NFS based `StorageClass`](https://github.com/SUSE/scf/wiki/How-to-Install-SCF#choosing-a-storage-class) because MySQL does not work well with it. For additional information you can take a look at [Storage Class](#storage-class)
-1. Create a `values.yaml` based on [this](./values.yaml) template.
+1. Create a `values.yaml` based on [this](../values.yaml) template.
 1. Make the Eirini helm repository available to helm:
 
     ```bash
