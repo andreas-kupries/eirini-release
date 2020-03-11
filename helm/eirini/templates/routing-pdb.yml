@@ -1,0 +1,12 @@
+{{- if .Values.opi.routing.enable }}
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: eirini-routing
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      name: "eirini-routing"
+{{- end }}

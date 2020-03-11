@@ -5,6 +5,7 @@ metadata:
   name: "eirini-routing"
   namespace: {{ .Release.Namespace }}
 spec:
+  replicas: 2
   selector:
     matchLabels:
       name: "eirini-routing"
