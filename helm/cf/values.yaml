@@ -1594,7 +1594,7 @@ sizing:
 
     # The nats instance group can scale between 1 and 3 instances.
     # For high availability it needs at least 2 instances.
-    count: ~
+    count: 2
 
     # Unit [millicore]
     cpu:
